@@ -1,12 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
+import { useLocalState } from './util/useLocalStorage';
 
 function App() {
 
-  const [jwt, setJwt] = useState("");
+  const [jwt, setJwt] = useLocalState("", "jwt");
 
   useEffect(() => {
+    if(!jwt){
     const requestBody = {
       "username":"dozie",
       "password":"asdfasdf"
@@ -24,8 +26,8 @@ function App() {
     
       setJwt(headers.get("authorization"))
       console.log(jwt)
-      // console.log(body)
     });
+  }
   }, []);
 
 useEffect(() => {
