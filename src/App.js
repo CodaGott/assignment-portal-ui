@@ -5,6 +5,8 @@ import { useLocalState } from './util/useLocalStorage';
 import { Routes, Route } from 'react-router-dom';
 import Dashboard from './dasboard';
 import Homepage from './homepage';
+import Login from './login';
+import PrivateRoute from './privateRoute';
 
 function App() {
 
@@ -39,7 +41,12 @@ useEffect(() => {
 
   return (
     <Routes>
-      <Route path="dashboard" element={<Dashboard/>}/>
+      <Route path="dashboard" element={
+      <PrivateRoute>
+        <Dashboard/>
+      </PrivateRoute>
+      }/>
+      <Route path="login" element={<Login />}/>
       <Route path="/"element={<Homepage/>}/>
     </Routes>
   );
