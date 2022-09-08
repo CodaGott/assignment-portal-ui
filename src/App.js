@@ -7,6 +7,7 @@ import Dashboard from './dasboard';
 import Homepage from './homepage';
 import Login from './login';
 import PrivateRoute from './privateRoute';
+import AssignmentView from './assignment';
 
 function App() {
 
@@ -46,6 +47,13 @@ useEffect(() => {
         <Dashboard/>
       </PrivateRoute>
       }/>
+      <Route path='/assignments/:id'
+        element={
+          <PrivateRoute>
+            <AssignmentView/>
+          </PrivateRoute>
+        }
+      />
       <Route path="login" element={<Login />}/>
       <Route path="/"element={<Homepage/>}/>
     </Routes>
